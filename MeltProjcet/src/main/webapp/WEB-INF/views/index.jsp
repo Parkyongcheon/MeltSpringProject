@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,9 +100,17 @@
                                 <!-- Login/Register & Cart Button -->
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50">
-                                        <a href="login" id="loginBtn">Login / Register</a>
-                                    </div>
+                                    <c:if test="${sessionScope.idnum == null}">
+                                    	<div class="login-register-btn mr-50">
+	                                        <a href="login" id="loginBtn">Login / Register</a>
+                                    	</div>
+                                    </c:if>
+                                    <c:if test="${sessionScope.idnum != null}">
+                                    	<div class="login-register-btn mr-50">
+	                                        <a href="kakaologout" id="loginBtn">Logout</a>
+                                    	</div>
+	                                </c:if>
+                                    
 
                                     <!-- Cart Button -->
                                     <div class="cart-btn">
@@ -148,7 +159,7 @@
                         <div class="col-12">
                             <div class="hero-slides-content text-center">
                                 <h6 data-animation="fadeInUp" data-delay="100ms">Wirte Your Story</h6>
-                                <h2 data-animation="fadeInUp" data-delay="300ms">Your Story <span>Your Story</span></h2>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Music Story <span>Music Story</span></h2>
                                 <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Tell us your Story  <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>

@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>Melt 설명 페이지</h1>
+${sessionScope.idnum }
 </body>
 </html>
