@@ -62,12 +62,12 @@ public class HomeController {
 		return "login";
 	}
 	
-	@GetMapping("/home")
-	public String home()
+	@GetMapping("/index")
+	public String callindex()
 	{
-		logger.info("Login Page In");
+		logger.info("index Page In");
 		
-		return "home";
+		return "index";
 	}
 	
 	

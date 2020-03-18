@@ -117,9 +117,9 @@
 	                                </c:if>
                                     
 
-                                    <!-- Cart Button -->
+                                    <!-- 알람 Button -->
                                     <div class="cart-btn">
-                                        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>
+                                        <p><span class="icon-settings"></span> <span class="quantity">1</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -532,8 +532,8 @@
                             <div class="song-name">
                                 <p>01. Main Hit Song</p>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="resources/index/audio/dummy-audio.mp3">
+                            <audio preload="auto" controls autoplay="autoplay" loop="loop">
+                                <source src="resources/index/audio/ex.mp3" >
                             </audio>
                         </div>
                     </div>
