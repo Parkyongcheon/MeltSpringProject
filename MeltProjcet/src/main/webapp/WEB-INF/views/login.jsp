@@ -100,14 +100,21 @@
                                 <!-- Login/Register & Cart Button -->
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50">
-	                                    <c:if test="${sessionScope.idnum == null} ">
+                                    <c:if test="${sessionScope.idnum == null}">
+                                    	<div class="login-register-btn mr-50">
 	                                        <a href="login" id="loginBtn">Login / Register</a>
-	                                    </c:if>
-	                                    <c:if test="${sessionScope.idnum != null} ">
-	                                        <a href="login" id="loginBtn">Logout</a>
-	                                    </c:if>
-                                    </div>
+                                    	</div>
+                                    </c:if>
+                                    <c:if test="${sessionScope.idnum != null && sessionScope.nickname != null}">
+                                    	<div class="login-register-btn mr-50">
+	                                        <a href="kakaologout" id="loginBtn">Logout</a>
+                                    	</div>
+	                                </c:if>
+	                                <c:if test="${sessionScope.idnum != null && sessionScope.name != null}">
+                                    	<div class="login-register-btn mr-50">
+	                                        <a href="googlelogout" id="loginBtn">Logout</a>
+                                    	</div>
+	                                </c:if>
 
                                     <!-- Cart Button -->
                                     <div class="cart-btn">
@@ -148,6 +155,10 @@
                             	<a href="https://kauth.kakao.com/oauth/authorize?client_id=848400309939678a9e8fdf3e02717490&redirect_uri=http://localhost:8089/melt/kakao&response_type=code"><img src="resources/kakaobtn.png"></a>
                             </div>
                             <!-- #### kakaotalk login end #### -->
+                            <br>
+                            <!-- #### google login start #### -->
+                            <div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="230" src="${pageContext.request.contextPath}/resources/googlebtn.png"/></a></div>
+                            <!-- #### google login end #### -->	
                         </div>
                     </div>
                 </div>
@@ -161,7 +172,7 @@
         <div class="container">
             <div class="row d-flex flex-wrap align-items-center">
                 <div class="col-12 col-md-6">
-                    <a href="#"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="#"><img src="resources/index/img/core-img/logo.png" alt=""></a>
                     <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright ©<script>document.write(new Date().getFullYear());</script>2020 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by </a><a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>

@@ -105,9 +105,14 @@
 	                                        <a href="login" id="loginBtn">Login / Register</a>
                                     	</div>
                                     </c:if>
-                                    <c:if test="${sessionScope.idnum != null}">
+                                    <c:if test="${sessionScope.idnum != null && sessionScope.nickname != null}">
                                     	<div class="login-register-btn mr-50">
 	                                        <a href="kakaologout" id="loginBtn">Logout</a>
+                                    	</div>
+	                                </c:if>
+	                                <c:if test="${sessionScope.idnum != null && sessionScope.name != null}">
+                                    	<div class="login-register-btn mr-50">
+	                                        <a href="googlelogout" id="loginBtn">Logout</a>
                                     	</div>
 	                                </c:if>
                                     
