@@ -94,7 +94,9 @@
                                     </li>
                                     <li><a href="event.html">Events</a></li>
                                     <li><a href="blog.html">News</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <c:if test="${sessionScope.idnum != null}">
+                                    	<li><a href="setting">Setting</a></li>
+                                    </c:if>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -105,7 +107,7 @@
 	                                        <a href="login" id="loginBtn">Login / Register</a>
                                     	</div>
                                     </c:if>
-                                    <c:if test="${sessionScope.idnum != null && sessionScope.nickname != null}">
+                                    <c:if test="${sessionScopeidnum != null && sessionScope.nickname != null}">
                                     	<div class="login-register-btn mr-50">
 	                                        <a href="kakaologout" id="loginBtn">Logout</a>
                                     	</div>
@@ -118,9 +120,11 @@
                                     
 
                                     <!-- 알람 Button -->
+                                    <c:if test="${sessionScope.idnum != null}">
                                     <div class="cart-btn">
-                                        <p><span class="icon-settings"></span> <span class="quantity">1</span></p>
+                                        <p><span class="icon-bell"></span> <span class="quantity">1</span></p>
                                     </div>
+                                    </c:if>
                                 </div>
                             </div>
                             <!-- Nav End -->
@@ -532,9 +536,11 @@
                             <div class="song-name">
                                 <p>01. Main Hit Song</p>
                             </div>
-                            <audio preload="auto" controls autoplay="autoplay" loop="loop">
+                            
+                            <audio preload="auto" controls autoplay loop="loop">
                                 <source src="resources/index/audio/ex.mp3" >
                             </audio>
+                            
                         </div>
                     </div>
                 </div>
@@ -864,33 +870,6 @@
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
-        <div class="container">
-            <div class="row d-flex flex-wrap align-items-center">
-                <div class="col-12 col-md-6">
-                    <a href="#"><img src="resources/index/img/core-img/logo.png" alt=""></a>
-                    <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                </div>
-
-                <div class="col-12 col-md-6">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="home">Home</a></li>
-                            <li><a href="#">Albums</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- ##### Footer Area Start ##### -->
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->

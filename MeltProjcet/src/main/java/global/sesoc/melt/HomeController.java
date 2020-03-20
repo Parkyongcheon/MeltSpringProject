@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import global.sesoc.melt.vo.Userinfo;
+import global.sesoc.melt.dao.UserinfoDAO;
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +35,8 @@ public class HomeController {
 	private GoogleConnectionFactory googleConnectionFactory;
 	@Autowired
 	private OAuth2Parameters googleOAuth2Parameters;
+	@Autowired
+	private UserinfoDAO dao;
 	
 	@GetMapping("/")
 	public String index()
@@ -68,6 +76,31 @@ public class HomeController {
 		logger.info("index Page In");
 		
 		return "index";
+	}
+	
+	@GetMapping("/setting")
+	public String setting(Model model,HttpSession session)
+	{
+		logger.info("setting Page In");
+		String nick = "";
+        nick = dao.getnickname((String)session.getAttribute("idnum"));
+		model.addAttribute("nick",nick);
+		
+		return "setting";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/changenick")
+	public int changenick(Userinfo userinfo)
+	{
+		//logger.debug(userinfo.toString());
+		int result = 0;
+		result = dao.changenick(userinfo);
+		
+		
+		System.out.println(result);
+		
+		return result;	
 	}
 	
 	
