@@ -63,7 +63,7 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="albums-store.html">Albums</a></li>
+                                    <li><a href="albums-store.html">${sessionScope.idnum}</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Home</a></li>
@@ -95,7 +95,7 @@
                                     <li><a href="event.html">Events</a></li>
                                     <li><a href="blog.html">News</a></li>
                                     <c:if test="${sessionScope.idnum != null}">
-                                    	<li><a href="setting">Setting</a></li>
+                                    	<li><a href="<c:url value='setting'/>">Setting</a></li>
                                     </c:if>
                                 </ul>
 
@@ -107,9 +107,9 @@
 	                                        <a href="login" id="loginBtn">Login / Register</a>
                                     	</div>
                                     </c:if>
-                                    <c:if test="${sessionScopeidnum != null && sessionScope.nickname != null}">
+                                    <c:if test="${sessionScope.idnum != null && sessionScope.nickname != null}">
                                     	<div class="login-register-btn mr-50">
-	                                        <a href="kakaologout" id="loginBtn">Logout</a>
+	                                        <a href="<c:url value='kakaologout'/>" id="loginBtn">Logout</a>
                                     	</div>
 	                                </c:if>
 	                                <c:if test="${sessionScope.idnum != null && sessionScope.name != null}">
@@ -870,6 +870,7 @@
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
+
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->

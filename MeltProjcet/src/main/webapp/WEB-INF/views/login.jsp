@@ -63,7 +63,7 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="index">Home</a></li>
-                                    <li><a href="albums-store.html">Albums</a></li>
+                                    <li><a href="albums-store.html">${sessionScope.access_Token}</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="index">Home</a></li>
@@ -152,13 +152,14 @@
                         <div class="login-form">
                         	<!-- #### kakaotalk login start #### -->
                             <div>
-                            	<a href="https://kauth.kakao.com/oauth/authorize?client_id=848400309939678a9e8fdf3e02717490&redirect_uri=http://localhost:8089/melt/kakao&response_type=code"><img src="resources/kakaobtn.png"></a>
+                            	<a href="https://kauth.kakao.com/oauth/authorize?client_id=848400309939678a9e8fdf3e02717490&redirect_uri=http://203.233.199.149:8089/melt/kakao&response_type=code"><img src="resources/kakaobtn.png"></a>
                             </div>
                             <!-- #### kakaotalk login end #### -->
                             <br>
                             <!-- #### google login start #### -->
-                            <div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="230" src="${pageContext.request.contextPath}/resources/googlebtn.png"/></a></div>
-                            <!-- #### google login end #### -->	
+                            <div id="google_id_login" style="text-align:center">
+                            <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/analytics.readonly&access_type=offline&include_granted_scopes=true&redirect_uri=http://inmelt.myq-see.com:8089/melt/google&response_type=code&client_id=1076621433838-pgcvvagrsnr3n99l1h6chi292d1abe58.apps.googleusercontent.com">
+                            <img width="230" src="${pageContext.request.contextPath}/resources/googlebtn.png"/></a></div>                            <!-- #### google login end #### -->	
                         </div>
                     </div>
                 </div>

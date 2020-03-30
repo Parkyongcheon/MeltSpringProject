@@ -62,7 +62,7 @@ public class HomeController {
 		logger.info("Login Page In");
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-
+		//String url = "https://accounts.google.com/o/oauth2/auth?client_id=1076621433838-pgcvvagrsnr3n99l1h6chi292d1abe58.apps.googleusercontent.com&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login&redirect_uri=http:/203.233.199.149:8089/melt/google"
 		//System.out.println("구글:" + url);
 
 		model.addAttribute("google_url", url);
@@ -83,7 +83,9 @@ public class HomeController {
 	{
 		logger.info("setting Page In");
 		String nick = "";
+		
         nick = dao.getnickname((String)session.getAttribute("idnum"));
+        logger.info(nick);
 		model.addAttribute("nick",nick);
 		
 		return "setting";
