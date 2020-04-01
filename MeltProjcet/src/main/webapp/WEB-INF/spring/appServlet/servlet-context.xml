@@ -38,6 +38,7 @@
 	
 	<context:component-scan base-package="global.sesoc" />
 	
+	<resources location="file:///C:/uploadPath/" mapping="/image/**"></resources>
 	
 	
 </beans:beans>

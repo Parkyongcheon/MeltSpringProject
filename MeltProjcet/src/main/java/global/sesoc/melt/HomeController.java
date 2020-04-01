@@ -1,11 +1,14 @@
 package global.sesoc.melt;
 
+import java.io.IOException;
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +19,16 @@ import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import global.sesoc.melt.vo.Userinfo;
 import global.sesoc.melt.dao.UserinfoDAO;
+import global.sesoc.melt.util.FileService;
 
 /**
  * Handles requests for the application home page.
@@ -37,6 +44,9 @@ public class HomeController {
 	private OAuth2Parameters googleOAuth2Parameters;
 	@Autowired
 	private UserinfoDAO dao;
+	
+	final String uploadPath = "/uploadPath";
+	
 	
 	@GetMapping("/")
 	public String index()
@@ -83,11 +93,14 @@ public class HomeController {
 	{
 		logger.info("setting Page In");
 		String nick = "";
+		String profile = "";
 		
         nick = dao.getnickname((String)session.getAttribute("idnum"));
+        profile = dao.getfile((String)session.getAttribute("idnum"));
         logger.info(nick);
+        logger.info(profile);
 		model.addAttribute("nick",nick);
-		
+		model.addAttribute("profile", profile);
 		return "setting";
 	}
 	
@@ -105,5 +118,29 @@ public class HomeController {
 		return result;	
 	}
 	
+	@PostMapping("/inprofile")
+	public String fileUpload(Userinfo userinfo, MultipartFile upload, HttpSession session)throws IOException
+	{
+		String id = (String)session.getAttribute("idnum");
+		String sprofile = FileService.saveFile(upload, uploadPath);
+		String oprofile = upload.getOriginalFilename();
+		
+		
+		userinfo.setId(id);
+		userinfo.setOprofile(oprofile);
+		userinfo.setSprofile(sprofile);
+		
+		System.out.println("====== fileupload ======");
+		System.out.println("id는"+id);
+		System.out.println("oprofile은"+oprofile);
+		System.out.println("sprofile은"+sprofile);
+		System.out.println("========================");
+		int result = dao.inprofile(userinfo);
+		System.out.println(result);
+		//String pathlink = uploadPath+"/"+sprofile;
+		//session.setAttribute("filelink", pathlink);
+		System.out.println("설정 완료");
+		return "redirect:setting";
+	}
 	
 }
