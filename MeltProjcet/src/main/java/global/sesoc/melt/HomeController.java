@@ -143,4 +143,10 @@ public class HomeController {
 		return "redirect:setting";
 	}
 	
+	@GetMapping("/test")
+	public String test() 
+	{
+		return "test";
+	}
+	
 }

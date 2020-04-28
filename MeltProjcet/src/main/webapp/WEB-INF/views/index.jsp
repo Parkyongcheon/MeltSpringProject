@@ -92,7 +92,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="event.html">Events</a></li>
+                                    <li><a href="test">test</a></li>
                                     <li><a href="blog.html">News</a></li>
                                     <c:if test="${sessionScope.idnum != null}">
                                     	<li><a href="<c:url value='setting'/>">Setting</a></li>
